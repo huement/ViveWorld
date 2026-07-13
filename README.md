@@ -7,6 +7,8 @@
   </p>
 </div>
 
+![](preview.png)
+
 A retro-futuristic, low-poly 3D cosmic simulator and visualizer built with **React**, **Three.js (React Three Fiber)**, and **Tailwind CSS v4**. Experience a stylized celestial ecosystem featuring an active asteroid belt, a blazing self-illuminated star, and a responsive glassmorphic command deck.
 
 ## 🌟 Core Features
