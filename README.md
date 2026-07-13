@@ -70,9 +70,11 @@ Open the **☰ Controls** deck from the top-left corner to tweak environmental p
 | Q               | Rapid zoom in         |
 | E               | Rapid zoom out        |
 
-## 🚀 Future Roadmap: Audio Integration
+## 🚀 Audio Integration
 
-The internal state model is structurally optimized to support a future **Music Visualizer Expansion**. The global context context hooks are prepared to ingest dynamic frequency arrays, unlocking features like:
+The internal state model is structurally optimized for the **Music Visualizer**. The global context context hooks are prepared to ingest dynamic frequency arrays, unlocking features like:
 
 - **Solar Flare Pulse:** Mapping treble frequencies to drive the Sun’s emissiveIntensity and geometry scale.
 - **Asteroid Waveform:** Passing bass amplitudes into the asteroid positioning loop to translate the ring into a fluid, swirling physical audio visualizer waveform.
+
+Some of the audio stuff is working, some is in progress!
