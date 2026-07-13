@@ -9,8 +9,12 @@ export const SceneProvider = ({ children }: { children: ReactNode }) => {
     sunPosition: { x: -50, y: 30, z: -100 },
   });
 
+  const [analyser, setAnalyser] = useState<AnalyserNode | null>(null);
+
   return (
-    <SceneContext.Provider value={{ controls, setControls }}>
+    <SceneContext.Provider
+      value={{ controls, setControls, analyser, setAnalyser }}
+    >
       {children}
     </SceneContext.Provider>
   );

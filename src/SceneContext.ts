@@ -11,6 +11,8 @@ export interface SceneControls {
 export interface SceneContextType {
   controls: SceneControls;
   setControls: React.Dispatch<React.SetStateAction<SceneControls>>;
+  analyser: AnalyserNode | null;
+  setAnalyser: React.Dispatch<React.SetStateAction<AnalyserNode | null>>;
 }
 
 // Export the raw context so our Provider can read it

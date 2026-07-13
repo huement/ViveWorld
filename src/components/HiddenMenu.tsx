@@ -1,11 +1,63 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useSceneControls } from "../SceneContext";
 
 import logoSvg from "../assets/huement-logo.svg";
 
 export function HiddenMenu() {
   const [isOpen, setIsOpen] = useState(false);
-  const { controls, setControls } = useSceneControls();
+  const { controls, setControls, setAnalyser } = useSceneControls();
+  const [trackName, setTrackName] = useState<string>("");
+
+  // Keep a persistent reference to the active audio stream to prevent track overlapping
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioCtxRef = useRef<AudioContext | null>(null);
+
+  const handleAudioUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setTrackName(file.name);
+
+    // 1. Clean up existing playing audio if it exists
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.src = "";
+    }
+
+    // 2. Initialize the HTML5 Audio player instance
+    const audioUrl = URL.createObjectURL(file);
+    const audio = new Audio(audioUrl);
+    audio.crossOrigin = "anonymous";
+    audioRef.current = audio;
+
+    // 3. Set up Web Audio API Node Pipeline
+    if (!audioCtxRef.current) {
+      // Modern browsers require a user gesture (like a file upload click) to unlock this constructor
+      audioCtxRef.current = new (
+        window.AudioContext || (window as any).webkitAudioContext
+      )();
+    }
+    const ctx = audioCtxRef.current;
+
+    // Resume context if suspended by browser security policy
+    if (ctx.state === "suspended") {
+      ctx.resume();
+    }
+
+    const source = ctx.createMediaElementSource(audio);
+    const newAnalyser = ctx.createAnalyser();
+
+    // fftSize dictactes how granular our frequency cuts are (higher = more detailed data)
+    newAnalyser.fftSize = 512;
+
+    // 4. Complete the circuit connection: Source -> Analyser -> Speakers
+    source.connect(newAnalyser);
+    newAnalyser.connect(ctx.destination);
+
+    // 5. Store analyser globally & fire up the audio track
+    setAnalyser(newAnalyser);
+    audio.play();
+  };
 
   const handleStarCountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setControls((prev) => ({
@@ -64,16 +116,24 @@ export function HiddenMenu() {
         </h2>
 
         <div className="mt-6 space-y-6 font-mono text-xs">
-          {/* Audio Upload Placeholder */}
+          {/* FUNCTIONAL AUDIO INTERFACE DECK */}
           <div className="space-y-2">
             <label className="text-neutral-400 block uppercase tracking-wider">
               Audio Deck
             </label>
-            <div className="border border-dashed border-neutral-700 rounded-md p-4 text-center cursor-pointer hover:border-emerald-500 transition-colors bg-neutral-900/40">
-              <span className="text-neutral-500">
-                Drop audio file or click to load
+            <label className="block border border-dashed border-neutral-700 rounded-md p-4 text-center cursor-pointer hover:border-emerald-500 transition-colors bg-neutral-900/40 relative overflow-hidden">
+              <input
+                type="file"
+                accept="audio/*"
+                onChange={handleAudioUpload}
+                className="hidden"
+              />
+              <span className="text-neutral-500 block truncate">
+                {trackName
+                  ? `🎵 ${trackName}`
+                  : "Drop audio file or click to load"}
               </span>
-            </div>
+            </label>
           </div>
 
           {/* Scene Controls */}

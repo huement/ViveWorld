@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>🚀☀️ VIVE-SPACE 🌏🪐</h1>
+  <h1>🚀☀️ VIVE-WORLD 🌏🪐</h1>
   <p>
     <img src="https://img.shields.io/badge/React%20Three%20Viverse-v0.2.28-f43f5e?style=for-the-badge&logo=react&logoColor=white" alt="React Three Viverse"/>
     <img src="https://img.shields.io/badge/Three.js-v0.185.1-000000?style=for-the-badge&logo=three.js&logoColor=white" alt="Three.js"/>
