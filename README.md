@@ -80,6 +80,11 @@ The internal state model is structurally optimized for the **Music Visualizer**.
 Some of the audio stuff is working, some is in progress!
 
 
+## References
+
+I really fell in love with this [https://codepen.io/filipz/pen/yyyRgry](https://codepen.io/filipz/pen/yyyRgry) and used some of it to inspire my panels, instead of GSAP I went with a little different route, but still huge shoutout to this project. 
+
+
 ## License & Sponsorship
 
 Distributed freely under the open-source **MIT License**. Maintained, optimized, and engineered / sponsored by **[HUEMENT](https://huement.com/)**.
