@@ -78,3 +78,18 @@ The internal state model is structurally optimized for the **Music Visualizer**.
 - **Asteroid Waveform:** Passing bass amplitudes into the asteroid positioning loop to translate the ring into a fluid, swirling physical audio visualizer waveform.
 
 Some of the audio stuff is working, some is in progress!
+
+
+## License & Sponsorship
+
+Distributed freely under the open-source **MIT License**. Maintained, optimized, and engineered / sponsored by **[HUEMENT](https://huement.com/)**.
+This ecosystem is open-source. Review individual module code structures and engine script headers for specialized processing details.
+
+<p align="center">
+  <strong>If this software saved you time or a headache, consider keeping the engine running!</strong><br><br>
+  <a href='https://ko-fi.com/U1A7222617' target='_blank'>
+    <img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' />
+  </a>
+</p>
+
+**NOTE** If you want a specific feature added, I do freelance work and would be more than happy to work something out. [Contact Me Here](https://huement.com/contact)

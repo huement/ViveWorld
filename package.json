@@ -10,11 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@boxicons/react": "^1.0.3",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
     "@react-three/viverse": "^0.2.28",
+    "prettier": "^3.9.5",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
+    "styled-components": "^6.4.3",
     "three": "^0.185.1"
   },
   "devDependencies": {

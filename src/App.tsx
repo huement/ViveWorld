@@ -4,9 +4,12 @@ import { Planet } from "./components/Planet";
 import { Starfield } from "./components/Starfield";
 import { Sun } from "./components/Sun";
 import { AsteroidRing } from "./components/AsteroidRing";
-import { HiddenMenu } from "./components/HiddenMenu";
+import { HiddenMenu } from "./components/HiddenMenu/HiddenMenu";
+import SpectrumPanel from "./components/SpectrumPanel/SpectrumPanel";
+import { MetricsPanel } from "./components/MetricsPanel/MetricsPanel";
 import { SceneProvider } from "./SceneProvider";
 import { useSceneControls } from "./SceneContext";
+import { SphericalVisualizer } from "./components/SphericalVisualizer";
 import { SmartCameraControls } from "./components/SmartCameraControls";
 
 // 1. Move your canvas layout into a dedicated scene component
@@ -16,6 +19,8 @@ function SpaceScene() {
   return (
     <div className="relative w-screen h-screen bg-black select-none">
       <HiddenMenu />
+      <SpectrumPanel />
+      <MetricsPanel />
 
       <Canvas
         camera={{ position: [0, 0, 15], fov: 60 }}
@@ -48,11 +53,11 @@ function SpaceScene() {
 
         <Suspense fallback={null}>
           <Planet />
+
+          <SphericalVisualizer />
+
           {/* Added 'key' so the GPU updates the rock allocation smoothly */}
-          <AsteroidRing
-            key={controls.asteroidCount}
-            count={controls.asteroidCount}
-          />
+          <AsteroidRing key={controls.asteroidCount} />
         </Suspense>
 
         {/* Added 'key' so the GPU updates the star allocation smoothly */}
