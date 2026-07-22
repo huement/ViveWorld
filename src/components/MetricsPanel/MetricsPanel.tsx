@@ -82,8 +82,8 @@ export const MetricsPanel: FC = () => {
       const timeData = audioDataBuffer.current;
       const freqData = freqDataBuffer.current!;
 
-      analyser.getByteTimeDomainData(timeData);
-      analyser.getByteFrequencyData(freqData);
+      analyser.getByteTimeDomainData(timeData as unknown as Uint8Array<ArrayBuffer>);
+      analyser.getByteFrequencyData(freqData as unknown as Uint8Array<ArrayBuffer>);
 
       // A1. Draw Oscilloscope Waveform Line Path
       ctx.beginPath();

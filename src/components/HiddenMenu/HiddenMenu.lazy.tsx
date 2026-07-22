@@ -1,6 +1,10 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, type JSX } from "react";
 
-const LazyHiddenPanel = lazy(() => import("./HiddenMenu"));
+const LazyHiddenPanel = lazy(() =>
+  import("./HiddenMenu").then((module: any) => ({
+    default: module.default ?? module.HiddenMenu,
+  })),
+);
 
 const HiddenPanel = (
   props: JSX.IntrinsicAttributes & { children?: React.ReactNode },

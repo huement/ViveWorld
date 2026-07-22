@@ -178,7 +178,7 @@ const SpectrumPanel: FC = () => {
     ctx.clearRect(0, 0, width, height);
 
     // Extract dynamic frequencies
-    analyser.getByteFrequencyData(frequencyData);
+    analyser.getByteFrequencyData(frequencyData as unknown as Uint8Array<ArrayBuffer>);
 
     const activeBins = 80; // Limit rendering visualization to audio payload bounds
     const barWidth = width / activeBins;

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
@@ -33,7 +34,7 @@ export function Sun() {
 
   // 2. Generate starting circles. Re-allocates safely if sunSize slider tweaks baseRadius.
   const visualizerRings = useMemo(() => {
-    return Array.from({ length: numRings }).map((_, ringIdx) => {
+    return Array.from({ length: numRings }).map((_, _ringIdx) => {
       const positions = new Float32Array(numPoints * 3);
       const angles = new Float32Array(numPoints);
 
